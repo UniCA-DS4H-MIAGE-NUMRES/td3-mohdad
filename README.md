@@ -1,18 +1,48 @@
-This is a Kotlin Multiplatform project targeting Android, Web, Desktop.
+# PizzApp
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+Une application multiplateforme de commande de pizzas développée avec Kotlin Multiplatform et Jetpack Compose.
 
+## Aperçu du Projet
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+PizzApp est une application multiplateforme fonctionnant sur Android, Desktop et Web. Elle implémente un système de commande de pizzas avec les fonctionnalités suivantes :
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+- Affichage du menu des pizzas en grille
+- Vue détaillée des pizzas avec options de personnalisation
+- Gestion du panier
+- Gestion des états avec ViewModels
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+## Implémentation Technique
+
+Le projet utilise :
+
+- Kotlin Multiplatform pour le partage de code multiplateforme
+- Jetpack Compose pour l'implémentation de l'interface utilisateur
+- Le système de design Material 3
+- Architecture MVVM avec ViewModels pour la gestion des états
+- Gestion des ressources pour le chargement d'images multiplateforme
+
+## Structure du Projet
+
+- `composeApp/` : Module principal de l'application contenant :
+    - Le code commun pour toutes les plateformes
+    - Les implémentations spécifiques aux plateformes
+    - Les composants et écrans UI
+    - Les ViewModels pour la gestion des états
+
+## Défis et Solutions de Développement
+
+Les principaux défis rencontrés et résolus incluent :
+
+- Chargement d'images multiplateforme : Implémenté via ResourceLoader spécifique à chaque plateforme
+- Gestion des états : Résolue avec ViewModels utilisant MutableStateFlow
+- Cohérence de l'interface : Obtenue grâce au thème Material 3
+- Gestion du panier : Implémentée avec une gestion d'état réactive
+
+Le projet démontre les pratiques modernes de développement Kotlin Multiplatform tout en maintenant une architecture propre et une interface utilisateur réactive.
+
+## État Actuel et Limitations
+
+- L'application fonctionne correctement sur Android et Desktop
+- Le chargement des images n'a pas été complètement implémenté en raison de difficultés avec la gestion des ressources multiplateforme
+- L'interface utilisateur reste fonctionnelle mais basique
+- Des améliorations visuelles sont nécessaires pour une meilleure expérience utilisateur et je n'ai pas réussi à les implémenter.
