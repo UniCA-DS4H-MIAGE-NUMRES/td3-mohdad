@@ -1,8 +1,7 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -10,18 +9,13 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
 }
 
 kotlin {
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
-    }
+    // Add explicit JVM toolchain
+    jvmToolchain(17)
 
+    androidTarget()
     jvm("desktop")
 
     @OptIn(ExperimentalWasmDsl::class)
@@ -46,45 +40,26 @@ kotlin {
     sourceSets {
         val desktopMain by getting
 
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.android)
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.koin.core)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.room.runtime)
-            implementation(libs.androidx.navigation.compose)
-            implementation(libs.gson)
-        }
-
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.kotlinx.coroutines.core)
+
+            // Date & Time
             implementation(libs.kotlinx.datetime)
+
+            // Serialization
             implementation(libs.kotlinx.serialization.json)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.androidx.activity.compose)
         }
 
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.koin.core)
-            implementation("org.xerial:sqlite-jdbc:3.43.2.0")
-        }
-
-        wasmJsMain.dependencies {
-            // Wasm-specific dependencies can be added here
         }
     }
 }
@@ -114,16 +89,20 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+// Add this block to set JVM target for Kotlin compilation
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
 dependencies {
-    debugImplementation(compose.uiTooling)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.navigation.compose)
-    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.navigation.common.android)
 }
 
 compose.desktop {
@@ -136,13 +115,4 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
-}
-
-dependencies {
-    add("kspAndroid", libs.room.compiler)
-    add("kspDesktop", libs.room.compiler)
-}
-
-room {
-    schemaDirectory("$projectDir/schemas")
 }
