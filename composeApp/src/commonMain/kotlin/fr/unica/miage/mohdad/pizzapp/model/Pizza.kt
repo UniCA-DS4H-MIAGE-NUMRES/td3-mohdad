@@ -1,12 +1,18 @@
 package fr.unica.miage.mohdad.pizzapp.model
 
-import kotlinx.serialization.Serializable
+import androidx.compose.runtime.Immutable
 
-@Serializable
+@Immutable
 data class Pizza(
-    val id: Int,
     val name: String,
-    val description: String,
     val price: Double,
-    val imageUrl: String? = null
+    val image: Int
+)
+
+data class OrderEntity(
+    val id: Int = 0,
+    val dateTime: Long,
+    val pizzaName: String,
+    val extraCheese: Int,
+    val price: Double
 )
