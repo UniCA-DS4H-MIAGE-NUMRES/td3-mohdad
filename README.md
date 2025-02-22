@@ -46,3 +46,6 @@ Le projet démontre les pratiques modernes de développement Kotlin Multiplatfor
 - Le chargement des images n'a pas été complètement implémenté en raison de difficultés avec la gestion des ressources multiplateforme
 - L'interface utilisateur reste fonctionnelle mais basique
 - Des améliorations visuelles sont nécessaires pour une meilleure expérience utilisateur et je n'ai pas réussi à les implémenter.
+
+VIDEO:
+https://unice-my.sharepoint.com/:v:/g/personal/ralph_mohdad_etu_unice_fr/EevKRjnJA5NGs-TrpVaakV4BQVS3u-XVqtAizuUrbkt0gw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&email=Leo.DONATI%40univ-cotedazur.fr&e=6MvjAW
