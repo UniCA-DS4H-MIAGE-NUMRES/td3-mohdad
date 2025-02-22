@@ -27,7 +27,6 @@ fun App() {
     val orderHistoryViewModel = remember {
         OrderHistoryViewModel(OrderRepositoryMemory())
     }
-
     Scaffold(
         bottomBar = { BottomBar(
                 currentScreen = currentScreen,
