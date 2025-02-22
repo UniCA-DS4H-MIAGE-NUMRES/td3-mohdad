@@ -27,5 +27,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
+rootProject.name = "td3-mohdad"
 include(":composeApp")

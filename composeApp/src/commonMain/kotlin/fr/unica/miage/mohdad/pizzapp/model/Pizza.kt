@@ -1,12 +1,11 @@
 package fr.unica.miage.mohdad.pizzapp.model
 
-import kotlinx.serialization.Serializable
+import org.jetbrains.compose.resources.DrawableResource
 
-@Serializable
 data class Pizza(
     val id: Int,
     val name: String,
-    val description: String,
+    val imageResource: DrawableResource,
     val price: Double,
-    val imageUrl: String? = null
+    val ingredients: List<String>
 )

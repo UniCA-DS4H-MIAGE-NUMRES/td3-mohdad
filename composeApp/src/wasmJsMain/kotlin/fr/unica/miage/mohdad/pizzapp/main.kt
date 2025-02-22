@@ -1,11 +1,12 @@
 package fr.unica.miage.mohdad.pizzapp
 
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
+import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CanvasBasedWindow(canvasElementId = "ComposeTarget", title = "PizzApp") {
+    ComposeViewport(document.body!!) {
         App()
     }
 }
