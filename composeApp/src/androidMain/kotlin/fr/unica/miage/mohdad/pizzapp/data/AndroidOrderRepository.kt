@@ -8,7 +8,7 @@ import fr.unica.miage.mohdad.pizzapp.model.OrderEntity
 class AndroidOrderRepository(context: Context) : OrderRepository {
     private val database = Room.databaseBuilder(
         context,
-        Database::class.java,
+        AppDatabase::class.java,
         "orders_database"
     ).build()
 
