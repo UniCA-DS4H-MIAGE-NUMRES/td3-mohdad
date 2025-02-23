@@ -45,6 +45,12 @@ kotlin {
 
     sourceSets {
         val desktopMain by getting
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(libs.kotlinx.serialization.json) // Version compatible WASM
+                implementation(libs.kotlinx.coroutines.core) // Coroutines pour WASM
+            }
+        }
 
         androidMain.dependencies {
             implementation(compose.preview)
@@ -68,6 +74,7 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.sqlite.jdbc)
         }
     }
 }
