@@ -10,6 +10,7 @@ PizzApp est une application multiplateforme fonctionnant sur Android, Desktop et
 - Vue détaillée des pizzas avec options de personnalisation
 - Gestion du panier
 - Gestion des états avec ViewModels
+- Gestion de l'extrat fromage 
 
 ## Implémentation Technique
 
@@ -20,6 +21,9 @@ Le projet utilise :
 - Le système de design Material 3
 - Architecture MVVM avec ViewModels pour la gestion des états
 - Gestion des ressources pour le chargement d'images multiplateforme
+- Sqllite pour la gestion des données pour la partie Desktop
+- LocalStorage pour la gestion des données pour la partie Web
+- Room pour la gestion des données pour la partie Android
 
 ## Structure du Projet
 
@@ -42,10 +46,8 @@ Le projet démontre les pratiques modernes de développement Kotlin Multiplatfor
 
 ## État Actuel et Limitations
 
-- L'application fonctionne correctement sur Android et Desktop
-- Le chargement des images n'a pas été complètement implémenté en raison de difficultés avec la gestion des ressources multiplateforme
-- L'interface utilisateur reste fonctionnelle mais basique
-- Des améliorations visuelles sont nécessaires pour une meilleure expérience utilisateur et je n'ai pas réussi à les implémenter.
+- L'application fonctionne correctement sur Android et Desktop et web
+- Le chargement des images a été implémenté et fonctionne correctement sur toutes les plateformes
+  - L'interface utilisateur est réactive et fonctionnelle avec Jetpack Compose et ViewModels pour la gestion des états
 
-VIDEO:
-https://unice-my.sharepoint.com/:v:/g/personal/ralph_mohdad_etu_unice_fr/EevKRjnJA5NGs-TrpVaakV4BQVS3u-XVqtAizuUrbkt0gw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&email=Leo.DONATI%40univ-cotedazur.fr&e=6MvjAW
+VIDEO: https://drive.google.com/file/d/12Zcj-axSn4RaNGdTBtrJi2kgfp7tPbQa/view?usp=sharing
