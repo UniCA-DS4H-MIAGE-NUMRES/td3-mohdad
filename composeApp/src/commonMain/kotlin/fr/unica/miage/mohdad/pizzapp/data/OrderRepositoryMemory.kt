@@ -13,4 +13,8 @@ class OrderRepositoryMemory : OrderRepository {
     override suspend fun getAllOrders(): List<Order> {
         return orders.toList()
     }
+
+    override suspend fun clearAllOrders() {
+        orders.clear()
+    }
 }

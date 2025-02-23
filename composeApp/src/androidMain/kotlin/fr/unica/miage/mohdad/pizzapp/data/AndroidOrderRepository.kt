@@ -34,4 +34,8 @@ class AndroidOrderRepository(context: Context) : OrderRepository {
             )
         }
     }
+
+    override suspend fun clearAllOrders() {
+        database.orderDao().deleteAllOrders()
+    }
 }

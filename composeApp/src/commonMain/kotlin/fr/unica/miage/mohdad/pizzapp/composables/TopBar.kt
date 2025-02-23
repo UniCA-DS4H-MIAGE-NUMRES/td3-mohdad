@@ -23,6 +23,7 @@ fun TopBar(
                     contentDescription = "Back"
                 )
             }
-        }
+        },
+        backgroundColor = androidx.compose.ui.graphics.Color.Cyan
     )
 }

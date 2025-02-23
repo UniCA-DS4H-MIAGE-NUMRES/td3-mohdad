@@ -17,4 +17,9 @@ class OrderHistoryViewModel(private val repository: OrderRepository) {
         repository.addOrder(order)
         loadOrders()
     }
+    suspend fun clearHistory() {
+        // Add this method to your OrderRepository interface
+        repository.clearAllOrders()
+        loadOrders()
+    }
 }
