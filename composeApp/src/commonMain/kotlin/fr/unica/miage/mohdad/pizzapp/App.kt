@@ -1,5 +1,8 @@
-package fr.unica.miage.mohdad.pizzapp
 
+
+
+// App.kt
+package fr.unica.miage.mohdad.pizzapp
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -7,7 +10,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import fr.unica.miage.mohdad.pizzapp.composables.BottomBar
-import fr.unica.miage.mohdad.pizzapp.data.OrderRepositoryMemory
+import fr.unica.miage.mohdad.pizzapp.data.getOrderRepository
 import fr.unica.miage.mohdad.pizzapp.navigation.Screen
 import fr.unica.miage.mohdad.pizzapp.screens.CartScreen
 import fr.unica.miage.mohdad.pizzapp.screens.MenuScreen
@@ -18,17 +21,18 @@ import fr.unica.miage.mohdad.pizzapp.viewmodel.CartViewModel
 import fr.unica.miage.mohdad.pizzapp.viewmodel.OrderHistoryViewModel
 import fr.unica.miage.mohdad.pizzapp.viewmodel.PizzaViewModel
 
-
 @Composable
 fun App() {
     var currentScreen by remember { mutableStateOf<Screen>(Screen.Welcome) }
     val cartViewModel = remember { CartViewModel() }
     val pizzaViewModel = remember { PizzaViewModel() }
     val orderHistoryViewModel = remember {
-        OrderHistoryViewModel(OrderRepositoryMemory())
+        OrderHistoryViewModel(getOrderRepository()) // Utilise la bonne implémentation
     }
+
     Scaffold(
-        bottomBar = { BottomBar(
+        bottomBar = {
+            BottomBar(
                 currentScreen = currentScreen,
                 onNavigate = { screen ->
                     if (screen !is Screen.Pizza) {

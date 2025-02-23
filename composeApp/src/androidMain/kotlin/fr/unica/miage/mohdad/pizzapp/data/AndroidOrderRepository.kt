@@ -10,7 +10,9 @@ class AndroidOrderRepository(context: Context) : OrderRepository {
         context,
         AppDatabase::class.java,
         "orders_database"
-    ).build()
+    )
+        .fallbackToDestructiveMigration() // Optionnel: permet de recréer la base si la version change
+        .build()
 
     override suspend fun addOrder(order: Order) {
         database.orderDao().insertOrder(

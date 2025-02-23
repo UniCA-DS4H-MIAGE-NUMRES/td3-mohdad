@@ -26,6 +26,7 @@ import fr.unica.miage.mohdad.pizzapp.composables.TopBar
 import fr.unica.miage.mohdad.pizzapp.utils.loadImage
 import fr.unica.miage.mohdad.pizzapp.viewmodel.CartViewModel
 import fr.unica.miage.mohdad.pizzapp.viewmodel.PizzaViewModel
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun PizzaScreen(
@@ -64,7 +65,7 @@ fun PizzaScreen(
         ) {
             // Image placeholder
             Image(
-                painter = loadImage("pizza${pizza.id}.png"),
+                painter = painterResource(pizza.imageResource),
                 contentDescription = pizza.name,
                 modifier = Modifier
                     .size(200.dp)
