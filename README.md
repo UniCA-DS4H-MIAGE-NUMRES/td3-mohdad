@@ -1,5 +1,5 @@
 # PizzApp
-
+Equipe Mohdad Ralph Matthéo Vasseur
 Une application multiplateforme de commande de pizzas développée avec Kotlin Multiplatform et Jetpack Compose.
 
 ## Aperçu du Projet
